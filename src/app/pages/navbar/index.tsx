@@ -26,9 +26,6 @@ const Navbar = () => {
           <Button color="inherit" sx={{ color: 'black' }}>Login</Button>
         </Toolbar>
       </AppBar>
-      <Container>
-        <img src="/images/Picture23.png" alt="Your Image" style={{ width: '100%', marginTop: '-64px' }} />
-      </Container>
     </Box>
   );
 };
