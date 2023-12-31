@@ -1,13 +1,13 @@
-// components/Navbar.js
-import React from "react";
-import { AppBar, Toolbar, Typography, Button, IconButton, Container, Box } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import React from 'react';
+import Link from 'next/link';
+import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = () => {
   return (
-    <Box>
-      <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-        <Toolbar>
+    <Box zIndex={999}>
+      <AppBar position="relative" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
+        <Toolbar sx={{ justifyContent: '' }}>
           <IconButton
             size="large"
             edge="start"
@@ -17,13 +17,29 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'black' }}>
-            Your Logo
+          <Typography variant="h6" component="div" sx={{ paddingRight:'750px' }}>
+            <img src={'/images/logo.png'} alt="Logo" style={{ height: '40px' }} />
           </Typography>
-          <Button color="inherit" sx={{ color: 'black' }}>Home</Button>
-          <Button color="inherit" sx={{ color: 'black' }}>Businesses</Button>
-          <Button color="inherit" sx={{ color: 'black' }}>Profile</Button>
-          <Button color="inherit" sx={{ color: 'black' }}>Login</Button>
+          <Link href="/">
+            <Button color="inherit" sx={{ color: 'black',paddingRight:'100px' }}>
+              Home
+            </Button>
+          </Link>
+          <Link href="/pages/business">
+            <Button color="inherit" sx={{ color: 'black',paddingRight:'100px' }}>
+              Businesses
+            </Button>
+          </Link>
+          <Link href="/pages/profile">
+            <Button color="inherit" sx={{ color: 'black',paddingRight:'100px' }}>
+              Profile
+            </Button>
+          </Link>
+          <Link href="/pages/login">
+            <Button color="inherit" sx={{ color: 'black' }}>
+              Login
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

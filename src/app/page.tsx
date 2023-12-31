@@ -1,11 +1,12 @@
 'use client';
 
-import HomePage from './pages/home/index';
-
+import HomePage from './pages/home/page';
+import Navbar from './pages/navbar';
+// import Business from './pages/business';
 const Home = () => {
   return (
-    <>
-       <HomePage />
+    <>       <HomePage />
+       {/* <Business/> */}
     </>
   )
 }
