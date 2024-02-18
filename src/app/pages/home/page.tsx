@@ -1,5 +1,4 @@
 'use client';
-// pages/index.js
 import React from "react";
 import Link from 'next/link';
 import { Container, Grid,Typography, Button, Box  } from "@mui/material";
