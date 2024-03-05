@@ -3,41 +3,41 @@ import { gql, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import Navbar from '../navbar';
-import client from '../../../apollo.config';
+import client from '../../../../apollo.config';
 
 const SIGNUP_MUTATION = gql`
-  mutation Signup($firstName: String!, $lastName: String!, $email: String!, $password: String!, $confirmPassword: String!) {
-    signup(firstName: $firstName, lastName: $lastName, email: $email, password: $password, confirmPassword: $confirmPassword) {
-      id
+  mutation registerUser($username: String!, $email: String!, $password: String!) {
+    registerUser(username: $username, email: $email, password: $password) {
+      _id
       email
     }
   }
 `;
 
 const SignupPage = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  //const [confirmPassword, setConfirmPassword] = useState('');
 
-  const [shandle] = useMutation(SIGNUP_MUTATION);
 
   const handleSignup = async () => {
     try {
-      // Use the Apollo Client instance to execute the mutation
       const { data } = await client.mutate({
         mutation: SIGNUP_MUTATION,
         variables: {
-          firstName,
-          lastName,
+          username,
           email,
           password,
-          confirmPassword,
+          //confirmPassword,
         },
       });
-
+      setUsername('')
+      setEmail('')
+      setPassword('')
       console.log('Signup success:', data);
+      window.location.href = "login";
+
     } catch (error) {
       console.error('Signup error:', error);
     }
@@ -74,16 +74,8 @@ const SignupPage = () => {
             <TextField
               label="First Name"
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Last Name"
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               fullWidth
               margin="normal"
             />
@@ -103,14 +95,7 @@ const SignupPage = () => {
               fullWidth
               margin="normal"
             />
-            <TextField
-              label="Confirm Password"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
+
             <Button
               variant="contained"
               color="primary"

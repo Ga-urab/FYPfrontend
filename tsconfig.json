@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/apollo.config.js", "src/app/pages/business/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/apollo.config.js", "src/app/pages/business/page.js", "src/app/pages/login/page.js", "src/app/pages/profile/page.js"],
   "exclude": ["node_modules"]
 }

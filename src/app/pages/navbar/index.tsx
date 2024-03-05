@@ -1,9 +1,15 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { AppBar, Toolbar, Typography, Button, IconButton, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Box, CircularProgress } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import cookie from "react-cookies";
 
 const Navbar = () => {
+  const [loading, setLoading] = useState(true);
+  const token = cookie.load("token");
+
+
   return (
     <Box zIndex={999}>
       <AppBar position="relative" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
@@ -35,11 +41,21 @@ const Navbar = () => {
               Profile
             </Button>
           </Link>
-          <Link href="/pages/login">
+          {token ? (
+                        <Link href="/pages/login">
+
             <Button color="inherit" sx={{ color: 'black' }}>
-              Login
+              Logout
             </Button>
-          </Link>
+            </Link>
+
+          ) : (
+            <Link href="/pages/login">
+              <Button color="inherit" sx={{ color: 'black' }}>
+                Login
+              </Button>
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
